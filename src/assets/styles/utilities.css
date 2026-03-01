@@ -35,3 +35,13 @@
   border-radius: var(--border-radius);
   padding: clamp(1.5rem, 1rem + 2.5vw, 3.25rem);
 }
+
+.label {
+  margin-bottom: 0.2rem;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
+.label--error {
+  color: var(--color-error);
+}

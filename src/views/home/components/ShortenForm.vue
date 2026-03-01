@@ -47,11 +47,7 @@ const handleSubmit = async (): Promise<void> => {
   <form @submit.prevent="handleSubmit" class="form">
     <div class="form__row">
       <div class="form__item">
-        <label
-          for="long-url"
-          class="form__label"
-          :class="{ 'form__label--error': hasValidationError }"
-        >
+        <label for="long-url" class="label" :class="{ 'label--error': hasValidationError }">
           URL
         </label>
         <input
@@ -86,16 +82,6 @@ const handleSubmit = async (): Promise<void> => {
 .form__item {
   flex: 1;
   position: relative;
-}
-
-.form__label {
-  margin-bottom: 0.2rem;
-  display: inline-block;
-  font-size: 0.9rem;
-}
-
-.form__label--error {
-  color: var(--color-error);
 }
 
 .form__input {
