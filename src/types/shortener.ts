@@ -3,3 +3,7 @@ export interface ShortenResponse {
   shortUrl: string
   longUrl: string
 }
+
+export interface ResolveResponse {
+  url: string
+}

@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid'
-import type { ShortenResponse } from '@/types/shortener'
+import type { ResolveResponse, ShortenResponse } from '@/types/shortener'
 
 const KEY = 'url-shortener'
 
@@ -35,4 +35,13 @@ export const shortenUrl = (longUrl: string): Promise<ShortenResponse> => {
     shortUrl: `${window.location.origin}/r/${shortCode}`,
     longUrl: url,
   })
+}
+
+export const resolveShortCode = (shortCode: string): Promise<ResolveResponse> => {
+  const store = getStore()
+  const url = store[shortCode.trim()]
+
+  if (!url) return Promise.reject(new Error('Short link not found'))
+
+  return Promise.resolve({ url })
 }

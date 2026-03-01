@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4847aac5-dd93-425e-819a-92dcc689087b/deploy-status)](https://app.netlify.com/projects/nkus/deploys)
+
 # URL Shortener (MVP)
 
 A minimal URL shortener: paste a long URL, get a short link; open the short link to be redirected to the original URL.
