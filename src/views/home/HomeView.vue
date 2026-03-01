@@ -1,14 +1,22 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import ShortenForm from './components/ShortenForm.vue'
+import type { ShortenResponse } from '@/types/shortener'
+
+const shortenedLink = ref<ShortenResponse | null>(null)
+
+const setLink = (payload: ShortenResponse): void => {
+  shortenedLink.value = payload
+}
 </script>
 
 <template>
-  <div class="home">
+  <div class="home container">
     <div class="card">
       <h1 class="title title--brackets"><em class="title__highlight">URL</em> Shortener</h1>
       <p class="tagline">Paste a long URL and get a short link.</p>
 
-      <ShortenForm />
+      <ShortenForm @success="setLink" />
     </div>
   </div>
 </template>

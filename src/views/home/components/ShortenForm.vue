@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { shortenUrl } from '@/api/shortener'
+import type { ShortenResponse } from '@/types/shortener'
 
 const longUrl = ref('')
 const loading = ref(false)
 const hasValidationError = ref(false)
+
+const emit = defineEmits<{
+  success: [payload: ShortenResponse]
+}>()
 
 const validate = (): boolean => {
   const value = longUrl.value.trim()
@@ -27,7 +33,13 @@ const handleSubmit = async (): Promise<void> => {
     return
   }
 
-  // TODO: shorten URL
+  loading.value = true
+
+  const res = await shortenUrl(longUrl.value)
+
+  emit('success', res)
+
+  loading.value = false
 }
 </script>
 
