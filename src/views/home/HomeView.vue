@@ -3,7 +3,7 @@ import ShortenForm from './components/ShortenForm.vue'
 </script>
 
 <template>
-  <div class="home container">
+  <div class="home">
     <div class="card">
       <h1 class="title title--brackets"><em class="title__highlight">URL</em> Shortener</h1>
       <p class="tagline">Paste a long URL and get a short link.</p>

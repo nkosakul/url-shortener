@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BaseFooter from '@/components/BaseFooter.vue'
 import StarIcon from '@/assets/icons/star.svg'
 import CircleIcon from '@/assets/icons/circle.svg'
 </script>
@@ -8,6 +9,8 @@ import CircleIcon from '@/assets/icons/circle.svg'
     <main class="main">
       <RouterView />
     </main>
+
+    <BaseFooter />
 
     <!-- background svg's -->
     <div class="bg-icons">
