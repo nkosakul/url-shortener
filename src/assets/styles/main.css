@@ -1,0 +1,26 @@
+@import './normalize.css';
+@import './fonts.css';
+@import './utilities.css';
+
+:root {
+  --color-primary: #127ac9;
+  --color-primary-dark: #0e3654;
+  --color-text: #30373d;
+  --color-text-light: #fff;
+  --color-bg-dark: #031320;
+  --color-bg-light: #f2f4f7;
+
+  --border-radius: 12px;
+}
+
+html {
+  font-size: 100%;
+  font-family: 'DKBEuclid', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: var(--color-text);
+  font-size: 1.25rem;
+}

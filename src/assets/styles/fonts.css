@@ -1,0 +1,22 @@
+@font-face {
+  font-display: swap;
+  font-family: 'DKBEuclid';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/DKBEuclid-Medium-WebXL.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'DKBEuclid';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/DKBEuclid-Regular-WebXL.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'hasklig';
+  font-weight: 300;
+  src: url('../fonts/hasklig-bold-webfont.woff2') format('woff2');
+}

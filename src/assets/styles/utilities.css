@@ -1,0 +1,37 @@
+.sr-only {
+  overflow: hidden !important;
+  position: absolute !important;
+  clip: rect(0 0 0 0) !important;
+  border: 0 !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  width: 1px !important;
+}
+
+.container {
+  max-width: 1330px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.button {
+  border-radius: 55px;
+  padding: 1rem 1.5rem;
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-light);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button:hover,
+.button:focus-visible {
+  background-color: var(--color-primary-dark);
+}
+
+.card {
+  width: 100%;
+  background: var(--color-bg-light);
+  border-radius: var(--border-radius);
+  padding: clamp(1.5rem, 1rem + 2.5vw, 3.25rem);
+}
