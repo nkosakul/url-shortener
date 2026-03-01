@@ -88,13 +88,21 @@ const handleSubmit = async (): Promise<void> => {
 .form__row {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: flex-end;
   gap: 1rem;
+}
+
+@media (min-width: 601px) {
+  .form__row {
+    flex-direction: row;
+  }
 }
 
 .form__item {
   flex: 1;
   position: relative;
+  width: 100%;
 }
 
 .form__input {
@@ -112,6 +120,13 @@ const handleSubmit = async (): Promise<void> => {
 
 .form__submit {
   min-height: 3.75rem;
+  width: 100%;
+}
+
+@media (min-width: 601px) {
+  .form__submit {
+    width: auto;
+  }
 }
 
 .form__error {
