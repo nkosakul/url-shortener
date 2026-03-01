@@ -44,7 +44,7 @@ const handleSubmit = async (): Promise<void> => {
 </script>
 
 <template>
-  <form @submit.prevent="handleSubmit" class="form">
+  <form data-test="shorten-form" @submit.prevent="handleSubmit" class="form">
     <div class="form__row">
       <div class="form__item">
         <label for="long-url" class="label" :class="{ 'label--error': hasValidationError }">
@@ -52,6 +52,7 @@ const handleSubmit = async (): Promise<void> => {
         </label>
         <input
           id="long-url"
+          data-test="long-url-input"
           v-model="longUrl"
           type="text"
           inputmode="url"
@@ -61,12 +62,24 @@ const handleSubmit = async (): Promise<void> => {
           :aria-invalid="!!hasValidationError"
           :aria-describedby="hasValidationError ? 'long-url-error' : undefined"
         />
-        <span v-if="hasValidationError" id="long-url-error" class="form__error">
+        <span
+          v-if="hasValidationError"
+          id="long-url-error"
+          data-test="validation-error"
+          class="form__error"
+        >
           Please enter a valid URL (like https://example.com).
         </span>
       </div>
 
-      <button type="submit" class="button form__submit" :disabled="loading">Shorten Link</button>
+      <button
+        type="submit"
+        data-test="submit-button"
+        class="button form__submit"
+        :disabled="loading"
+      >
+        Shorten Link
+      </button>
     </div>
   </form>
 </template>

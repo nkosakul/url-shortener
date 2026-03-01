@@ -27,22 +27,28 @@ const copyShortUrl = async (): Promise<void> => {
 </script>
 
 <template>
-  <div class="shorten-result">
+  <div data-test="shorten-result" class="shorten-result">
     <div class="shorten-result__field">
       <label for="short-link" class="label">Shortened link</label>
       <input
         id="short-link"
+        data-test="short-link-input"
         type="text"
         :value="shortenedLink.shortUrl"
         readonly
         class="shorten-result__input"
       />
     </div>
-    <button class="copy-button" @click="copyShortUrl" aria-label="Copy short URL to clipboard">
+    <button
+      data-test="copy-button"
+      class="copy-button"
+      @click="copyShortUrl"
+      aria-label="Copy short URL to clipboard"
+    >
       <CopyIcon class="copy-button__svg" aria-hidden="true" />
     </button>
 
-    <div role="alert" v-show="copied" class="copy-notification">
+    <div data-test="copy-notification" role="alert" v-show="copied" class="copy-notification">
       {{ alertMessage }}
     </div>
   </div>
