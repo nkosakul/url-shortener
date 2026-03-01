@@ -2,23 +2,63 @@
 import { ref } from 'vue'
 
 const longUrl = ref('')
+const loading = ref(false)
+const hasValidationError = ref(false)
+
+const validate = (): boolean => {
+  const value = longUrl.value.trim()
+  if (!value) return false
+
+  try {
+    new URL(value)
+    return true
+  } catch {
+    return false
+  }
+}
+
+const handleSubmit = async (): Promise<void> => {
+  hasValidationError.value = false
+
+  // validate URL
+  const isValid = validate()
+  if (!isValid) {
+    hasValidationError.value = true
+    return
+  }
+
+  // TODO: shorten URL
+}
 </script>
 
 <template>
-  <form class="form">
+  <form @submit.prevent="handleSubmit" class="form">
     <div class="form__row">
       <div class="form__item">
-        <label for="long-url" class="form__label">URL</label>
+        <label
+          for="long-url"
+          class="form__label"
+          :class="{ 'form__label--error': hasValidationError }"
+        >
+          URL
+        </label>
         <input
           id="long-url"
           v-model="longUrl"
-          type="url"
+          type="text"
+          inputmode="url"
           placeholder="https://example.com/very/long/url"
           class="form__input"
+          :disabled="loading"
+          :aria-invalid="!!hasValidationError"
+          :aria-describedby="hasValidationError ? 'long-url-error' : undefined"
         />
+        <span v-if="hasValidationError" id="long-url-error" class="form__error">
+          Please enter a valid URL (like https://example.com).
+        </span>
       </div>
 
-      <button type="submit" class="button form__submit">Shorten Link</button>
+      <button type="submit" class="button form__submit" :disabled="loading">Shorten Link</button>
     </div>
   </form>
 </template>
@@ -42,6 +82,10 @@ const longUrl = ref('')
   font-size: 0.9rem;
 }
 
+.form__label--error {
+  color: var(--color-error);
+}
+
 .form__input {
   font-size: clamp(1rem, 0.943rem + 0.286vw, 1.2rem);
   min-height: 3.75rem;
@@ -51,7 +95,20 @@ const longUrl = ref('')
   width: 100%;
 }
 
+.form__input[aria-invalid='true'] {
+  border-color: var(--color-error);
+}
+
 .form__submit {
   min-height: 3.75rem;
+}
+
+.form__error {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(calc(100% + 0.25rem));
+  color: var(--color-error);
+  font-size: 0.9rem;
 }
 </style>
